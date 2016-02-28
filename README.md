@@ -2,20 +2,7 @@
 
 ## Docker-Compose recommended
 
-See `docker-compose.yml` in repo:
-```
-version: "2"
-services:
-  factorio:
-    image: hugecannon/factorio:latest
-    volumes:
-      -  "data:/factorio/factorio:rw"
-    ports:
-      -  "34197:34197"
-volumes:
-  data:
-    driver: local
-```
+See [`docker-compose.yml`](https://github.com/hugecannon/factorio/blob/master/docker-compose.yml) in repo:
 
 1. Create a save
 
