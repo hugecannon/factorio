@@ -1,7 +1,7 @@
 version: "2"
 services:
   factorio:
-    image: factorio:latest
+    image: hugeacnnon/factorio:latest
     volumes:
       -  "data:/factorio/factorio:rw"
     ports:
