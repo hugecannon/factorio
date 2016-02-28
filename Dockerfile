@@ -9,4 +9,6 @@ RUN curl -L -k https://www.factorio.com/get-download/0.12.24/demo/linux64 | tar 
 VOLUME ["/factorio/factorio"]
 
 EXPOSE 34197/udp
-ENTRYPOINT ["/factorio/factorio/bin/x64/factorio"]
+
+WORKDIR /factorio/factorio/bin/x64/
+ENTRYPOINT ["./factorio"]
