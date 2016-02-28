@@ -6,6 +6,7 @@ services:
       -  "data:/factorio/factorio:rw"
     ports:
       -  "34197:34197"
+    command: "--start-server mygame"
 volumes:
   data:
     driver: local
