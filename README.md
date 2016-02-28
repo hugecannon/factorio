@@ -9,4 +9,4 @@ See [`docker-compose.yml`](https://github.com/hugecannon/factorio/blob/master/do
   `docker-compose run factorio --create mygame`
 2. Start the server
 
-  `docker-compose up -d factorio --start-server mygame`
+  `docker-compose up -d factorio
