@@ -1,0 +1,11 @@
+version: "2"
+services:
+  factorio:
+    image: factorio:latest
+    volumes:
+      -  "data:/factorio/factorio:rw"
+    ports:
+      -  "34197:34197"
+volumes:
+  data:
+    driver: local
