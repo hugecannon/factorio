@@ -5,7 +5,7 @@ services:
     volumes:
       -  "data:/factorio/factorio:rw"
     ports:
-      -  "34197:34197"
+      -  "34197:34197/udp"
     command: "--start-server mygame"
 volumes:
   data:
