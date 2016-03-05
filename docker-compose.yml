@@ -3,10 +3,10 @@ services:
   factorio:
     image: hugecannon/factorio:latest
     volumes:
-      -  "data:/factorio/factorio:rw"
+      -  "factorio_saves:/factorio/saves:rw"
     ports:
       -  "34197:34197/udp"
     command: "--start-server mygame"
 volumes:
-  data:
-    driver: local
+  factorio_saves:
+    external: true
