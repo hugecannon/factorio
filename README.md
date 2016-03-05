@@ -1,12 +1,29 @@
 # Factorio Server
 
-## Docker-Compose recommended
+# Start a new game
 
-See [`docker-compose.yml`](https://github.com/hugecannon/factorio/blob/master/docker-compose.yml) in repo:
+`docker run --rm -v "factorio_saves:/factorio/saves" hugecannon/factorio:latest --create mygame`
 
-1. Create a save
 
-  `docker-compose run factorio --create mygame`
-2. Start the server
+# Run Factororio server
 
-  `docker-compose up -d factorio`
+`docker run -d --name factorio -p "34197:34197/udp" -v "factorio_saves:/factorio/saves" hugecannon/factorio:latest --start-server mygame`
+
+
+# Load a previous save to server
+
+### Ensure server is stopped
+`docker kill factorio`
+
+### Copy save into volume
+
+`docker cp mygame.zip factorio:/factorio/saves/`
+
+### Start server again
+
+`docker start factorio`
+
+
+# Back up a save game
+
+`docker cp factorio:/factorio/saves/mygame.zip .` 
