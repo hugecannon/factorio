@@ -34,3 +34,8 @@ docker start factorio
 ```bash
 docker cp factorio:/factorio/saves/mygame.zip .
 ``` 
+
+
+### Versions
+
+If you require an older version of the server, see [the tags page](https://hub.docker.com/r/hugecannon/factorio/tags/), and use the appropriate tag. e.g. `hugecannon/factorio:0.12.25`
