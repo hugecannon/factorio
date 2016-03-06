@@ -29,10 +29,10 @@ docker start factorio
 ```
 
 
-#### Back up a save game
+#### Back up a save games (this backs up all saves including autosaves)
 
 ```bash
-docker cp factorio:/factorio/saves/mygame.zip .
+docker cp factorio:/factorio/saves .
 ``` 
 
 
