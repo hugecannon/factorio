@@ -11,7 +11,11 @@ docker run --rm -v "factorio_saves:/factorio/saves" hugecannon/factorio:latest -
 #### Run Factororio server
 
 ```bash
-docker run -d --name factorio -p "34197:34197/udp" -v "factorio_saves:/factorio/saves" hugecannon/factorio:latest --start-server mygame
+docker run -d --name factorio \
+  -p "34197:34197/udp" \
+  -v "factorio_saves:/factorio/saves" \
+  hugecannon/factorio:latest \
+  --start-server mygame
 ```
 
 
