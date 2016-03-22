@@ -7,7 +7,7 @@ RUN apt-get update &&\
   apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /factorio
-RUN curl -L -k https://www.factorio.com/get-download/0.12.26/headless/linux64 | tar --strip-components=1 -xzf -
+RUN curl -L -k https://www.factorio.com/get-download/0.12.27/headless/linux64 | tar --strip-components=1 -xzf -
 
 VOLUME ["/factorio/saves"]
 
