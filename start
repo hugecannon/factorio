@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# cribbed from https://github.com/Bisa/factorio-init/blob/master/factorio
+
+set -eo pipefail
+
+[[ "$TRACE" ]] && set -x
+
+declare savedir="/factorio/saves"
+declare bin="/factorio/bin/x64/factorio"
+
+refresh_save() {
+  declare save_name="$1"
+
+  # Check to see if save dir actually exists
+  if ! [ -e ${savedir} ]; then
+    echo "Error! Save directory missing: ${savedir}"
+    exit 1
+  fi
+
+  # Find the last modified save file
+  lastsave=$(ls -t ${savedir}/*.zip 2> /dev/null | head -1)
+
+  # Sanity check, did we even find any save files?
+  if [ -z "${lastsave}" ]; then
+    echo "Error! Unable to find any saves in ${savedir}"
+    exit 1
+  fi
+
+  echo "last modified save: ${lastsave}"
+
+  # If the last modified save is our own, keep using it
+  if [ "${lastsave}" == "${savedir}/${save_name}.zip" ]; then
+    echo "using existing ${save_name}.zip"
+    return 0
+  fi
+
+  # Else we copy the latest save to our own save file
+  echo "using refreshed save"
+  if ! "cp ${lastsave} ${savedir}/${save_name}.zip"; then
+    echo "Error! Failed to refresh saves"
+    exit 1
+  fi
+}
+
+main() {
+  declare save_name="$1"
+
+  if [[ ! -e "${savedir}/${save_name}.zip" ]]; then
+    $bin --create ${save_name}
+  fi
+
+  refresh_save "$save_name"
+
+  ls -la $bin
+  exec $bin --start-server $save_name
+}
+
+main "$@"

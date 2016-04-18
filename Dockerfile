@@ -7,9 +7,13 @@ RUN apt-get update &&\
   apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /factorio
-RUN curl -L -k https://www.factorio.com/get-download/0.12.29/headless/linux64 | tar --strip-components=1 -xzf -
+RUN curl -L -k https://www.factorio.com/get-download/0.12.30/headless/linux64 | tar --strip-components=1 -xzf -
 
 VOLUME ["/factorio/saves"]
+VOLUME ["/factorio/mods"]
 
 EXPOSE 34197/udp
-ENTRYPOINT ["/factorio/bin/x64/factorio"]
+
+COPY start start
+
+ENTRYPOINT ["./start"]
