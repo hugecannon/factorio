@@ -50,10 +50,8 @@ main() {
     $bin --create ${save_name}
   fi
 
-  refresh_save "$save_name"
-
   ls -la $bin
-  exec $bin --start-server $save_name
+  exec $bin --start-server "${savedir}/${save_name}.zip"
 }
 
 main "$@"
