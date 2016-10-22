@@ -47,7 +47,7 @@ main() {
   declare save_name="$1"
 
   if [[ ! -e "${savedir}/${save_name}.zip" ]]; then
-    $bin --create ${save_name}
+    $bin --create "${savedir}/${save_name}.zip"
   fi
 
   ls -la $bin
